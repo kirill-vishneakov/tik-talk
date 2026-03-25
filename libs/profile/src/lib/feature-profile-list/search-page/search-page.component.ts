@@ -1,5 +1,5 @@
 import { ProfileFiltersComponent } from '../profile-filters/profile-filters.component';
-import { Component, ElementRef, HostListener, inject, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, Renderer2 } from '@angular/core';
 import { ProfileCardComponent } from '../../ui';
 import { Store } from '@ngrx/store';
 import {
@@ -7,7 +7,6 @@ import {
   selectFilteredProfiles,
 } from '@tt/data-access/profile';
 import { WaIntersectionObservee, WaIntersectionObserverDirective } from '@ng-web-apis/intersection-observer';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
 
 @Component({
   selector: 'app-search-page',
@@ -17,10 +16,10 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
     ProfileFiltersComponent,
     WaIntersectionObservee,
     WaIntersectionObserverDirective,
-    InfiniteScrollDirective
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPageComponent {
   store = inject(Store);

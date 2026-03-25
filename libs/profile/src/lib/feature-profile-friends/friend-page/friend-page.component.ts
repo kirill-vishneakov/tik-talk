@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, HostListener, inject, OnInit, Renderer2, signal, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, HostListener, inject, OnInit, Renderer2, signal, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
   Profile,
@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './friend-page.component.html',
   styleUrls: ['./friend-page.component.scss'],
   imports: [ProfileCardComponent, RouterLink],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FriendPageComponent {
   store = inject(Store);

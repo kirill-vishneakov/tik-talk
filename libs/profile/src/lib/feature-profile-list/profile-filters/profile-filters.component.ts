@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import {
   profileActions,
   selectFilteredProfiles,
   selectSaveFilteredProfiles,
-} from '../../../../../data-access/src/lib/profile';
+} from '@tt/profile';
 import {
   BehaviorSubject,
   debounceTime,
@@ -20,6 +20,7 @@ import { Store } from '@ngrx/store';
   imports: [ReactiveFormsModule],
   templateUrl: './profile-filters.component.html',
   styleUrl: './profile-filters.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileFiltersComponent {
   store = inject(Store);

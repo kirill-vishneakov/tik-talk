@@ -1,0 +1,33 @@
+<form class="profile-search-form" [formGroup]="searchForm">
+  <label class="tt-form-label">
+    <span class="tt-form-label-text">Название сообщества</span>
+    <input
+      formControlName="title"
+      type="text"
+      class="tt-form-input"
+      placeholder="Введите данные"
+    />
+  </label>
+
+  <label class="tt-form-label">
+    <span class="tt-form-label-text">Тема</span>
+    <select class="tt-input" formControlName="theme">
+      <option [value]="TopicType.NONE">--Выберите тему--</option>
+      <option [value]="TopicType.PROGRAMMING">Программирование</option>
+      <option [value]="TopicType.TECHNOLOGY">Технологии</option>
+      <option [value]="TopicType.EDUCATION">Обучение</option>
+      <option [value]="TopicType.SPORT">Спорт</option>
+      <option [value]="TopicType.OTHER">Другое</option>
+    </select>
+  </label>
+
+  <label class="tt-form-label">
+    <span class="tt-form-label-text">Теги</span>
+    <input
+      formControlName="tegs"
+      type="text"
+      class="tt-form-input"
+      placeholder="Введите данные"
+    />
+  </label>
+</form>

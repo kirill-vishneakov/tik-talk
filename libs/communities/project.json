@@ -1,7 +1,7 @@
 {
-  "name": "form",
-  "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "form/src",
+  "name": "communities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/communities/src",
   "prefix": "tt",
   "projectType": "library",
   "tags": [],
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "form/jest.config.ts"
+        "jestConfig": "libs/communities/jest.config.ts"
       }
     },
     "lint": {

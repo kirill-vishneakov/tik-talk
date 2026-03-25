@@ -15,6 +15,7 @@ import { LayoutComponent } from '@tt/layout';
 import { canActivateAuth, LoginPageComponent } from '@tt/auth';
 import { chatsRoutes } from '@tt/chat';
 import { provideState } from '@ngrx/store';
+import { CommunitiesComponent } from '@tt/communities';
 
 export const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -60,6 +61,9 @@ export const routes: Routes = [
         providers: [provideState(chatFeature), provideEffects(ChatsEffects)],
       },
       { path: 'form', component: FormComponent },
+      {
+        path:'communities', component: CommunitiesComponent
+      }
     ],
     canActivate: [canActivateAuth],
   },

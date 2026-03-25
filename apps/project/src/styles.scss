@@ -12,6 +12,7 @@
   --light-border: 1px solid var(--light-color);
   --dark-border: 1px solid var(--dark-color);
   --message-color: #404040;
+  --background: url(/assets/imgs/img-bg.jpg);
 }
 
 *,
@@ -25,7 +26,7 @@
 body {
   font-family: 'JetBrains Mono', sans-serif;
   background-color: var(--dark-color);
-  background-image: url(/assets/imgs/img-bg.jpg);
+  background-image: var(--background);
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--light-color);
@@ -192,7 +193,7 @@ body {
 }
 
 .tt-form-textarea {
-  height: 84px;
+  height: 72px;
   resize: none;
   overflow: hidden;
 }

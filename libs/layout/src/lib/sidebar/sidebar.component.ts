@@ -1,29 +1,27 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SvgComponent, AvatarCircleComponent } from '@tt/common-ui';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   profileActions,
-  ProfileService,
   selectMeLoaded,
   selectSubLoaded,
 } from '@tt/profile';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { filter, firstValueFrom, map, reduce } from 'rxjs';
+import { map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import {
   ChatsService,
-  selectChat,
-  selectFilteredChatsList,
   selectUnreadMessages,
 } from '@tt/chat';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ThemeService } from '@tt/data-access/theme';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
-    SvgComponent,
+
+  SvgComponent,
     SubscriberCardComponent,
     RouterLink,
     RouterLinkActive,
@@ -32,9 +30,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent {
   store = inject(Store);
+  themeService = inject(ThemeService)
+
 
   subscribers$ = this.store
     .select(selectSubLoaded)
@@ -49,6 +50,7 @@ export class SidebarComponent {
       value: 'Чаты',
       link: '/chats',
     },
+    {icon: 'communities', value: 'Сообщества', link: '/communities'},
     { icon: 'friends', value: 'Друзья', link: '/friends' },
     { icon: 'search', value: 'Поиск', link: '/search' },
   ];

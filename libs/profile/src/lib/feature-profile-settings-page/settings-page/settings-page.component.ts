@@ -1,11 +1,10 @@
 import { profileActions, ProfileService, selectFilteredProfiles, selectMeLoaded } from '@tt/profile';
-import { Component, effect, inject, ViewChild } from '@angular/core';
-import { ProfileHeaderComponent, AvatarUploadComponent } from '../../ui';
+import { ChangeDetectionStrategy, Component, effect, inject, ViewChild } from '@angular/core';
+import { ProfileHeaderComponent, AvatarUploadComponent, ProfileDescriptionComponent } from '../../ui';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ImgUrlPipe, SvgComponent } from '@tt/common-ui';
 import { firstValueFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ProfileDescriptionComponent } from '../../ui/profile-description/profile-description.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -22,6 +21,7 @@ import { RouterLink } from '@angular/router';
   ],
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsPageComponent {
   fb = inject(FormBuilder);

@@ -42,9 +42,15 @@
 
   <div class="medium-text sidebar-footer__username">{{ me.username }}</div>
 
-  <a [routerLink]="['/settings']" class="sidebar-footer__settings">
-    <svg icon="settings"></svg>
-  </a>
+    <div class="sidebar-footer__icons">
+      <button class="btn-theme" (click)="themeService.changeTheme()">
+        <svg icon="theme" class="svg16"></svg>
+      </button>
+
+      <a [routerLink]="['/settings']" class="sidebar-footer__settings">
+        <svg icon="settings"></svg>
+      </a>
+    </div>
 
   }
 </footer>

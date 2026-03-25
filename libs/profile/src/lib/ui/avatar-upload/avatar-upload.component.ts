@@ -1,4 +1,4 @@
-import { Component, Input, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input, signal } from '@angular/core';
 import { SvgComponent, DndDirective, AvatarCircleComponent } from '@tt/common-ui';
 
 
@@ -8,6 +8,7 @@ import { SvgComponent, DndDirective, AvatarCircleComponent } from '@tt/common-ui
   imports: [SvgComponent, DndDirective, AvatarCircleComponent],
   templateUrl: './avatar-upload.component.html',
   styleUrl: './avatar-upload.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvatarUploadComponent {
   preview = signal<string>('');

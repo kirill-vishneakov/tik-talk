@@ -1,17 +1,16 @@
 import { PostFeedComponent, postsActions } from '@tt/posts';
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import {
   profileActions,
   ProfileService,
   selectAccountLoaded,
   selectMeLoaded, selectSubLoaded
-} from '../../../../../data-access/src/lib/profile';
+} from '@tt/profile';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { SvgComponent, ImgUrlPipe } from '@tt/common-ui';
-import { ProfileHeaderComponent } from '../../ui';
-import { ProfileDescriptionComponent } from '../../ui/profile-description/profile-description.component';
+import { ProfileHeaderComponent, ProfileDescriptionComponent } from '../../ui';
 import { Store } from '@ngrx/store';
 
 
@@ -29,6 +28,7 @@ import { Store } from '@ngrx/store';
   ],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfilePageComponent {
   profileService = inject(ProfileService);

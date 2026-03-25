@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Profile } from '@tt/data-access/profile';
 
@@ -9,6 +9,7 @@ import { Profile } from '@tt/data-access/profile';
   imports: [CommonModule],
   templateUrl: './profile-description.component.html',
   styleUrl: './profile-description.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileDescriptionComponent {
   profile = input.required<Profile>()

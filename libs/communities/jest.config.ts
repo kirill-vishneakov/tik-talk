@@ -1,8 +1,8 @@
 export default {
-  displayName: 'form',
-  preset: '../jest.preset.js',
+  displayName: 'communities',
+  preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../coverage/form',
+  coverageDirectory: '../../coverage/libs/communities',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

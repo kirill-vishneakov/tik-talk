@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
@@ -26,6 +27,7 @@ import { selectMeLoaded } from '@tt/data-access/profile';
   imports: [InputComponent, FormsModule, PostComponent],
   templateUrl: './post-feed.component.html',
   styleUrl: './post-feed.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostFeedComponent {
   store = inject(Store);

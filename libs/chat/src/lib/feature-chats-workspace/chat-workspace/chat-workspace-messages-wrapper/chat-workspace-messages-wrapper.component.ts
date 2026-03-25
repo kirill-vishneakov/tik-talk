@@ -1,5 +1,6 @@
 
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   HostListener,
@@ -10,26 +11,25 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ChatWorkspaceMessageComponent } from '../chat-workspace-message/chat-workspace-message.component';
-import { AvatarCircleComponent, InputComponent, SvgComponent, TimePipe } from '@tt/common-ui';
+import {  InputComponent} from '@tt/common-ui';
 import { Chat, chatsActions, ChatsService } from '@tt/chat';
 import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-chat-workspace-messages-wrapper',
   standalone: true,
-  imports: [ChatWorkspaceMessageComponent, InputComponent, AvatarCircleComponent, SvgComponent, TimePipe],
+  imports: [ChatWorkspaceMessageComponent, InputComponent],
   templateUrl: './chat-workspace-messages-wrapper.component.html',
   styleUrl: './chat-workspace-messages-wrapper.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatWorkspaceMessagesWrapperComponent {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
   chat = input.required<Chat>();
-
   store = inject(Store);
-  value = signal('')
-
-  ren= signal(false)
-  id = signal(0)
+  value = signal('');
+  ren= signal(false);
+  id = signal(0);
 
   onRenComment(payload: {id: number, rename: boolean}) {
     this.id.set(payload.id);
@@ -45,7 +45,7 @@ export class ChatWorkspaceMessagesWrapperComponent {
 
   renComment(postText: string){
     this.store.dispatch(chatsActions.messageRen({ messageId: this.id(), text: postText }))
-    this.ren.set(true)
+    this.ren.set(false)
   }
 
   chatService = inject(ChatsService)

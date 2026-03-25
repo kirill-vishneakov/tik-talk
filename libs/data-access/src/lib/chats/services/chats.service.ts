@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   Chat,
   LastMessageRes,
@@ -8,7 +8,6 @@ import {
 } from '../interfaces/chats.interface';
 import { map } from 'rxjs';
 import { DateTime } from 'luxon';
-
 import { selectMeLoaded } from '../../profile';
 import { Store } from '@ngrx/store';
 import { ChatWsServiceI } from '@tt/data-access/chats/interfaces/chat-ws-service.interface';
@@ -21,6 +20,7 @@ import {
   isNewMessage,
   isUnreadMessage,
 } from '@tt/data-access/chats/interfaces/type-guards';
+import { url } from '@tt/data-access/shared/tools/global-url';
 
 @Injectable({
   providedIn: 'root',
@@ -30,13 +30,12 @@ export class ChatsService {
   store = inject(Store);
   authService = inject(AuthService);
   me = this.store.selectSignal(selectMeLoaded);
-  url = 'https://icherniakov.ru/yt-course/';
 
   wsAdapter: ChatWsServiceI = new ChatWsService();
 
   connectWs() {
     return this.wsAdapter.connect({
-      url: `${this.url}chat/ws`,
+      url: `${url}chat/ws`,
       token: this.authService.token ?? '',
       handleMessage: this.handleWsMessage,
     });
@@ -59,7 +58,7 @@ export class ChatsService {
     if (isErrorMessage(message)) {
       this.wsAdapter.disconnect();
       this.wsAdapter.connect({
-        url: `${this.url}chat/ws`,
+        url: `${url}chat/ws`,
         token: this.authService.token ?? '',
         handleMessage: this.handleWsMessage,
       });
@@ -83,15 +82,15 @@ export class ChatsService {
   }
 
   createChat(userId: number) {
-    return this.http.post<Chat>(`${this.url}chat/${userId}`, {});
+    return this.http.post<Chat>(`${url}chat/${userId}`, {});
   }
 
   getMyChats() {
-    return this.http.get<LastMessageRes[]>(`${this.url}chat/get_my_chats/`);
+    return this.http.get<LastMessageRes[]>(`${url}chat/get_my_chats/`);
   }
 
   getChatById(chatId: number) {
-    return this.http.get<Chat>(`${this.url}chat/${chatId}`).pipe(
+    return this.http.get<Chat>(`${url}chat/${chatId}`).pipe(
       map((chat) => {
         return {
           ...chat,
@@ -134,7 +133,7 @@ export class ChatsService {
 
   sendMessage(chatId: number, message: string) {
     return this.http.post<Message>(
-      `${this.url}message/send/${chatId}`,
+      `${url}message/send/${chatId}`,
       {},
       {
         params: {
@@ -146,7 +145,7 @@ export class ChatsService {
 
   renMessage(messageId: number, text: string) {
     return this.http.patch<RenMessageRes>(
-      `${this.url}message/${messageId}`,
+      `${url}message/${messageId}`,
       {},
       {
         params: {
@@ -157,6 +156,6 @@ export class ChatsService {
   }
 
   deleteMessage(messageId: number) {
-    return this.http.delete<string>(`${this.url}message/${messageId}`);
+    return this.http.delete<string>(`${url}message/${messageId}`);
   }
 }

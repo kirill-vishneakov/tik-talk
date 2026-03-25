@@ -5,7 +5,8 @@ import {
   Output,
   EventEmitter,
   ViewChild,
-  ElementRef, input
+  ElementRef, input,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { AvatarCircleComponent } from '../avatar-circle/avatar-circle.component';
 import { SvgComponent } from '../svg/svg.component';
@@ -19,6 +20,7 @@ import { Store } from '@ngrx/store';
   imports: [AvatarCircleComponent, SvgComponent, FormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent {
   @Output() onClick = new EventEmitter<string>();

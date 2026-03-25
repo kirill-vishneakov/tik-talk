@@ -12,12 +12,13 @@
   border: 1px solid var(--light-color);
   background: var(--dark-color);
   padding: 32px;
-  height: calc(100dvh - (24px * 4));
+  height: calc(100dvh - (24px * 3));
 }
 
 .profile-form {
   display: grid;
   grid-gap: 20px;
+  margin-bottom: 24px;
 }
 
 .two-columns {

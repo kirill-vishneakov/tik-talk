@@ -3,8 +3,8 @@ import {
   DateAgoPipe,
   AvatarCircleComponent,
 } from '@tt/common-ui';
-import { Component, inject, input, signal } from '@angular/core';
-import { Comment, postsActions } from '../../../../../data-access/src/lib/posts';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
+import { Comment, postsActions } from '@tt/posts';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
   imports: [InputComponent, AvatarCircleComponent, DateAgoPipe, InputComponent],
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentComponent {
   ren = signal(false);

@@ -1,7 +1,7 @@
 @if(me(); as me){
   <div>
     <app-profile-header [profile]="me"></app-profile-header>
-    <hr class="mb16">
+    <hr class="mb16 mt16">
     <app-profile-description [profile]="me" ></app-profile-description>
   </div>
 
@@ -65,7 +65,7 @@
       />
     </label>
   </div>
-  <div>
+
     <div class="profile-form__btns">
       <button (click)="clearForm()" class="profile-form__btn">
         <svg icon="delete"></svg>
@@ -76,6 +76,6 @@
       <a [routerLink]="['/profile/me']" class="profile-form__canel_btn">Отмена</a>
       <button class="btn" (click)="onSave()">Сохранить</button>
     </div>
-  </div>
+
 </form>
 }

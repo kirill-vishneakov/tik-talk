@@ -1,14 +1,15 @@
-import { Component, EventEmitter, HostBinding, input, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, input, Output, signal } from '@angular/core';
 
-import { TimePipe, AvatarCircleComponent, SvgComponent, InputComponent } from '@tt/common-ui';
-import { Message } from '../../../../../../data-access/src/lib/chats';
+import { TimePipe, AvatarCircleComponent, SvgComponent } from '@tt/common-ui';
+import { Message } from '@tt/chat';
 
 @Component({
   selector: 'app-chat-workspace-message',
   standalone: true,
-  imports: [AvatarCircleComponent, TimePipe, SvgComponent, InputComponent],
+  imports: [AvatarCircleComponent, TimePipe, SvgComponent],
   templateUrl: './chat-workspace-message.component.html',
   styleUrl: './chat-workspace-message.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatWorkspaceMessageComponent {
   message = input.required<Message>();

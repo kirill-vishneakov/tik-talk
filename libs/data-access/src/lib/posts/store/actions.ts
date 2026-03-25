@@ -1,4 +1,4 @@
-import { Comment, CommentCreateDto } from '../interfaces/post.interface';
+import {  CommentCreateDto } from '../interfaces/post.interface';
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { Post, PostCreateDto } from '../interfaces/post.interface';
 

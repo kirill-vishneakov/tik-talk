@@ -1,15 +1,15 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, signal } from '@angular/core';
 import {
   InputComponent,
   AvatarCircleComponent,
   SvgComponent,
 } from '@tt/common-ui';
-import { Post, postsActions } from '../../../../../data-access/src/lib/posts';
+import { Post, postsActions } from '@tt/posts';
 import { DateAgoPipe } from '@tt/common-ui';
 import { CommentComponent } from '../../ui/comment/comment.component';
 import { Store } from '@ngrx/store';
 import { FormsModule } from '@angular/forms';
-import { ProfileService, selectMeLoaded } from '@tt/data-access/profile';
+import { selectMeLoaded } from '@tt/data-access/profile';
 
 @Component({
   selector: 'app-post',
@@ -24,6 +24,7 @@ import { ProfileService, selectMeLoaded } from '@tt/data-access/profile';
   ],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostComponent {
   post = input.required<Post>();
